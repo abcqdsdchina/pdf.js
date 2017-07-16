@@ -469,9 +469,9 @@ var PDFViewerApplication = {
   },
 
   get loadingBar() {
-    var bar = new ProgressBar('#loadingBar', {});
+    //var bar = new ProgressBar('#loadingBar', {});
 
-    return shadow(this, 'loadingBar', bar);
+    //return shadow(this, 'loadingBar', bar);
   },
 
   get supportedMouseWheelZoomModifierKeys() {
@@ -806,32 +806,32 @@ var PDFViewerApplication = {
   },
 
   progress: function pdfViewProgress(level) {
-    var percent = Math.round(level * 100);
+    //var percent = Math.round(level * 100);
     // When we transition from full request to range requests, it's possible
     // that we discard some of the loaded data. This can cause the loading
     // bar to move backwards. So prevent this by only updating the bar if it
     // increases.
-    if (percent > this.loadingBar.percent || isNaN(percent)) {
-      this.loadingBar.percent = percent;
+    //if (percent > this.loadingBar.percent || isNaN(percent)) {
+      //this.loadingBar.percent = percent;
 
       // When disableAutoFetch is enabled, it's not uncommon for the entire file
       // to never be fetched (depends on e.g. the file structure). In this case
       // the loading bar will not be completely filled, nor will it be hidden.
       // To prevent displaying a partially filled loading bar permanently, we
       // hide it when no data has been loaded during a certain amount of time.
-      if (PDFJS.disableAutoFetch && percent) {
-        if (this.disableAutoFetchLoadingBarTimeout) {
-          clearTimeout(this.disableAutoFetchLoadingBarTimeout);
-          this.disableAutoFetchLoadingBarTimeout = null;
-        }
-        this.loadingBar.show();
+      //if (PDFJS.disableAutoFetch && percent) {
+        //if (this.disableAutoFetchLoadingBarTimeout) {
+          //clearTimeout(this.disableAutoFetchLoadingBarTimeout);
+          //this.disableAutoFetchLoadingBarTimeout = null;
+        //}
+        //this.loadingBar.show();
 
-        this.disableAutoFetchLoadingBarTimeout = setTimeout(() => {
-          this.loadingBar.hide();
-          this.disableAutoFetchLoadingBarTimeout = null;
-        }, DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT);
-      }
-    }
+        //this.disableAutoFetchLoadingBarTimeout = setTimeout(() => {
+          //this.loadingBar.hide();
+          //this.disableAutoFetchLoadingBarTimeout = null;
+        //}, DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT);
+      //}
+    //}
   },
 
   load(pdfDocument, scale) {
@@ -840,7 +840,7 @@ var PDFViewerApplication = {
 
     pdfDocument.getDownloadInfo().then(() => {
       this.downloadComplete = true;
-      this.loadingBar.hide();
+      //this.loadingBar.hide();
 
       firstPagePromise.then(() => {
         this.eventBus.dispatch('documentload', { source: this, });
@@ -877,7 +877,7 @@ var PDFViewerApplication = {
     //pdfThumbnailViewer.setDocument(pdfDocument);
 
     firstPagePromise.then((pdfPage) => {
-      this.loadingBar.setWidth(this.appConfig.viewerContainer);
+      //this.loadingBar.setWidth(this.appConfig.viewerContainer);
 
       if (!PDFJS.disableHistory && !this.isViewerEmbedded) {
         // The browsing history is only enabled when the viewer is standalone,
