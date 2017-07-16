@@ -376,13 +376,13 @@ var PDFViewerApplication = {
       });
 
       // FIXME better PDFSidebar constructor parameters
-      let sidebarConfig = Object.create(appConfig.sidebar);
-      sidebarConfig.pdfViewer = this.pdfViewer;
+      //let sidebarConfig = Object.create(appConfig.sidebar);
+      //sidebarConfig.pdfViewer = this.pdfViewer;
       //sidebarConfig.pdfThumbnailViewer = this.pdfThumbnailViewer;
-      sidebarConfig.pdfOutlineViewer = this.pdfOutlineViewer;
-      sidebarConfig.eventBus = eventBus;
-      this.pdfSidebar = new PDFSidebar(sidebarConfig);
-      this.pdfSidebar.onToggled = this.forceRendering.bind(this);
+      //sidebarConfig.pdfOutlineViewer = this.pdfOutlineViewer;
+      //sidebarConfig.eventBus = eventBus;
+      //this.pdfSidebar = new PDFSidebar(sidebarConfig);
+      //this.pdfSidebar.onToggled = this.forceRendering.bind(this);
 
       resolve(undefined);
     });
@@ -566,7 +566,7 @@ var PDFViewerApplication = {
     this.store = null;
     this.isInitialViewSet = false;
 
-    this.pdfSidebar.reset();
+    //this.pdfSidebar.reset();
     this.pdfOutlineViewer.reset();
     this.pdfAttachmentViewer.reset();
 
@@ -1086,7 +1086,7 @@ var PDFViewerApplication = {
     var { scale = 0, sidebarView = SidebarView.NONE, } = options;
 
     this.isInitialViewSet = true;
-    this.pdfSidebar.setInitialView(sidebarView);
+    //this.pdfSidebar.setInitialView(sidebarView);
 
     if (this.initialDestination) {
       this.pdfLinkService.navigateTo(this.initialDestination);
@@ -1130,8 +1130,8 @@ var PDFViewerApplication = {
 
   forceRendering: function pdfViewForceRendering() {
     this.pdfRenderingQueue.printing = this.printing;
-    this.pdfRenderingQueue.isThumbnailViewEnabled =
-      this.pdfSidebar.isThumbnailViewVisible;
+    //this.pdfRenderingQueue.isThumbnailViewEnabled =
+      //this.pdfSidebar.isThumbnailViewVisible;
     this.pdfRenderingQueue.renderHighestPriority();
   },
 
@@ -1478,9 +1478,9 @@ function webViewerInitialized() {
       }
     }, true);
 
-  appConfig.sidebar.toggleButton.addEventListener('click', function() {
-    PDFViewerApplication.pdfSidebar.toggle();
-  });
+  //appConfig.sidebar.toggleButton.addEventListener('click', function() {
+    //PDFViewerApplication.pdfSidebar.toggle();
+  //});
 
   Promise.all(waitForBeforeOpening).then(function () {
     webViewerOpenFileViaURL(file);
@@ -1548,11 +1548,11 @@ function webViewerPageRendered(e) {
   }
 
   // Use the rendered page to set the corresponding thumbnail image.
-  if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
+  //if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
     //var thumbnailView = PDFViewerApplication.pdfThumbnailViewer.
                         //getThumbnail(pageIndex);
     //thumbnailView.setImage(pageView);
-  }
+  //}
 
   if (PDFJS.pdfBug && Stats.enabled && pageView.stats) {
     Stats.add(pageNumber, pageView.stats);
@@ -1611,7 +1611,7 @@ function webViewerPageMode(e) {
       console.error('Invalid "pagemode" hash parameter: ' + mode);
       return;
   }
-  PDFViewerApplication.pdfSidebar.switchView(view, /* forceOpen = */ true);
+  //PDFViewerApplication.pdfSidebar.switchView(view, /* forceOpen = */ true);
 }
 
 function webViewerNamedAction(e) {
@@ -1640,8 +1640,8 @@ function webViewerPresentationModeChanged(e) {
 }
 
 function webViewerSidebarViewChanged(evt) {
-  PDFViewerApplication.pdfRenderingQueue.isThumbnailViewEnabled =
-    PDFViewerApplication.pdfSidebar.isThumbnailViewVisible;
+  //PDFViewerApplication.pdfRenderingQueue.isThumbnailViewEnabled =
+    //PDFViewerApplication.pdfSidebar.isThumbnailViewVisible;
 
   var store = PDFViewerApplication.store;
   if (store && PDFViewerApplication.isInitialViewSet) {
@@ -1832,9 +1832,9 @@ function webViewerPageChanging(e) {
   //PDFViewerApplication.toolbar.setPageNumber(page, e.pageLabel || null);
   //PDFViewerApplication.secondaryToolbar.setPageNumber(page);
 
-  if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
+  //if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
     //PDFViewerApplication.pdfThumbnailViewer.scrollThumbnailIntoView(page);
-  }
+  //}
 
   // we need to update stats
   if (PDFJS.pdfBug && Stats.enabled) {
