@@ -273,8 +273,8 @@ var PDFViewerApplication = {
       });
       this.pdfLinkService = pdfLinkService;
 
-      let downloadManager = this.externalServices.createDownloadManager();
-      this.downloadManager = downloadManager;
+      //let downloadManager = this.externalServices.createDownloadManager();
+      //this.downloadManager = downloadManager;
 
       let container = appConfig.mainContainer;
       let viewer = appConfig.viewerContainer;
@@ -284,7 +284,7 @@ var PDFViewerApplication = {
         eventBus,
         renderingQueue: pdfRenderingQueue,
         linkService: pdfLinkService,
-        downloadManager,
+        //downloadManager,
         renderer: this.viewerPrefs['renderer'],
         enhanceTextSelection: this.viewerPrefs['enhanceTextSelection'],
         renderInteractiveForms: this.viewerPrefs['renderInteractiveForms'],
@@ -293,7 +293,7 @@ var PDFViewerApplication = {
       pdfRenderingQueue.setViewer(this.pdfViewer);
       pdfLinkService.setViewer(this.pdfViewer);
 
-      let thumbnailContainer = appConfig.sidebar.thumbnailView;
+      //let thumbnailContainer = appConfig.sidebar.thumbnailView;
       //this.pdfThumbnailViewer = new PDFThumbnailViewer({
         //container: thumbnailContainer,
         //renderingQueue: pdfRenderingQueue,
@@ -372,7 +372,7 @@ var PDFViewerApplication = {
       this.pdfAttachmentViewer = new PDFAttachmentViewer({
         container: appConfig.sidebar.attachmentsView,
         eventBus,
-        downloadManager,
+        //downloadManager,
       });
 
       // FIXME better PDFSidebar constructor parameters
@@ -678,19 +678,19 @@ var PDFViewerApplication = {
 
   download: function pdfViewDownload() {
     function downloadByUrl() {
-      downloadManager.downloadUrl(url, filename);
+      //downloadManager.downloadUrl(url, filename);
     }
 
     var url = this.baseUrl;
     // Use this.url instead of this.baseUrl to perform filename detection based
     // on the reference fragment as ultimate fallback if needed.
     var filename = getPDFFileNameFromURL(this.url);
-    var downloadManager = this.downloadManager;
-    downloadManager.onerror = function (err) {
+    //var downloadManager = this.downloadManager;
+    //downloadManager.onerror = function (err) {
       // This error won't really be helpful because it's likely the
       // fallback won't work either (or is already open).
-      PDFViewerApplication.error('PDF failed to download.');
-    };
+      //PDFViewerApplication.error('PDF failed to download.');
+    //};
 
     if (!this.pdfDocument) { // the PDF is not ready yet
       downloadByUrl();
@@ -705,7 +705,7 @@ var PDFViewerApplication = {
     this.pdfDocument.getData().then(
       function getDataSuccess(data) {
         var blob = createBlob(data, 'application/pdf');
-        downloadManager.download(blob, url, filename);
+        //downloadManager.download(blob, url, filename);
       },
       downloadByUrl // Error occurred try downloading with just the url.
     ).then(null, downloadByUrl);
