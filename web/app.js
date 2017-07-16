@@ -363,17 +363,17 @@ var PDFViewerApplication = {
 
       this.passwordPrompt = new PasswordPrompt(appConfig.passwordOverlay);
 
-      this.pdfOutlineViewer = new PDFOutlineViewer({
-        container: appConfig.sidebar.outlineView,
-        eventBus,
-        linkService: pdfLinkService,
-      });
+      //this.pdfOutlineViewer = new PDFOutlineViewer({
+        //container: appConfig.sidebar.outlineView,
+        //eventBus,
+        //linkService: pdfLinkService,
+      //});
 
-      this.pdfAttachmentViewer = new PDFAttachmentViewer({
-        container: appConfig.sidebar.attachmentsView,
-        eventBus,
+      //this.pdfAttachmentViewer = new PDFAttachmentViewer({
+        //container: appConfig.sidebar.attachmentsView,
+        //eventBus,
         //downloadManager,
-      });
+      //});
 
       // FIXME better PDFSidebar constructor parameters
       //let sidebarConfig = Object.create(appConfig.sidebar);
@@ -567,8 +567,8 @@ var PDFViewerApplication = {
     this.isInitialViewSet = false;
 
     //this.pdfSidebar.reset();
-    this.pdfOutlineViewer.reset();
-    this.pdfAttachmentViewer.reset();
+    //this.pdfOutlineViewer.reset();
+    //this.pdfAttachmentViewer.reset();
 
     //this.findController.reset();
     //this.findBar.reset();
@@ -1010,10 +1010,10 @@ var PDFViewerApplication = {
 
     Promise.all([onePageRendered, animationStarted]).then(() => {
       pdfDocument.getOutline().then((outline) => {
-        this.pdfOutlineViewer.render({ outline, });
+        //this.pdfOutlineViewer.render({ outline, });
       });
       pdfDocument.getAttachments().then((attachments) => {
-        this.pdfAttachmentViewer.render({ attachments, });
+        //this.pdfAttachmentViewer.render({ attachments, });
       });
     });
 
@@ -1471,12 +1471,12 @@ function webViewerInitialized() {
     //appConfig.toolbar.viewFind.classList.add('hidden');
   }
 
-  appConfig.sidebar.mainContainer.addEventListener('transitionend',
-    function(e) {
-      if (e.target === /* mainContainer */ this) {
-        PDFViewerApplication.eventBus.dispatch('resize');
-      }
-    }, true);
+  //appConfig.sidebar.mainContainer.addEventListener('transitionend',
+    //function(e) {
+      //if (e.target === /* mainContainer */ this) {
+        //PDFViewerApplication.eventBus.dispatch('resize');
+      //}
+    //}, true);
 
   //appConfig.sidebar.toggleButton.addEventListener('click', function() {
     //PDFViewerApplication.pdfSidebar.toggle();
