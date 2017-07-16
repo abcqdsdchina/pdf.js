@@ -294,12 +294,12 @@ var PDFViewerApplication = {
       pdfLinkService.setViewer(this.pdfViewer);
 
       let thumbnailContainer = appConfig.sidebar.thumbnailView;
-      this.pdfThumbnailViewer = new PDFThumbnailViewer({
-        container: thumbnailContainer,
-        renderingQueue: pdfRenderingQueue,
-        linkService: pdfLinkService,
-      });
-      pdfRenderingQueue.setThumbnailViewer(this.pdfThumbnailViewer);
+      //this.pdfThumbnailViewer = new PDFThumbnailViewer({
+        //container: thumbnailContainer,
+        //renderingQueue: pdfRenderingQueue,
+        //linkService: pdfLinkService,
+      //});
+      //pdfRenderingQueue.setThumbnailViewer(this.pdfThumbnailViewer);
 
       this.pdfHistory = new PDFHistory({
         linkService: pdfLinkService,
@@ -378,7 +378,7 @@ var PDFViewerApplication = {
       // FIXME better PDFSidebar constructor parameters
       let sidebarConfig = Object.create(appConfig.sidebar);
       sidebarConfig.pdfViewer = this.pdfViewer;
-      sidebarConfig.pdfThumbnailViewer = this.pdfThumbnailViewer;
+      //sidebarConfig.pdfThumbnailViewer = this.pdfThumbnailViewer;
       sidebarConfig.pdfOutlineViewer = this.pdfOutlineViewer;
       sidebarConfig.eventBus = eventBus;
       this.pdfSidebar = new PDFSidebar(sidebarConfig);
@@ -558,7 +558,7 @@ var PDFViewerApplication = {
     if (this.pdfDocument) {
       this.pdfDocument = null;
 
-      this.pdfThumbnailViewer.setDocument(null);
+      //this.pdfThumbnailViewer.setDocument(null);
       this.pdfViewer.setDocument(null);
       this.pdfLinkService.setDocument(null, null);
       this.pdfDocumentProperties.setDocument(null, null);
@@ -873,8 +873,8 @@ var PDFViewerApplication = {
 
     this.pageRotation = 0;
 
-    let pdfThumbnailViewer = this.pdfThumbnailViewer;
-    pdfThumbnailViewer.setDocument(pdfDocument);
+    //let pdfThumbnailViewer = this.pdfThumbnailViewer;
+    //pdfThumbnailViewer.setDocument(pdfDocument);
 
     firstPagePromise.then((pdfPage) => {
       this.loadingBar.setWidth(this.appConfig.viewerContainer);
@@ -976,7 +976,7 @@ var PDFViewerApplication = {
       }
 
       pdfViewer.setPageLabels(labels);
-      pdfThumbnailViewer.setPageLabels(labels);
+      //pdfThumbnailViewer.setPageLabels(labels);
 
       // Changing toolbar page display to use labels and we need to set
       // the label of the current page.
@@ -1120,7 +1120,7 @@ var PDFViewerApplication = {
       return; // run cleanup when document is loaded
     }
     this.pdfViewer.cleanup();
-    this.pdfThumbnailViewer.cleanup();
+    //this.pdfThumbnailViewer.cleanup();
 
     // We don't want to remove fonts used by active page SVGs.
     if (this.pdfViewer.renderer !== RendererType.SVG) {
@@ -1201,7 +1201,7 @@ var PDFViewerApplication = {
     var pageNumber = this.page;
     this.pageRotation = (this.pageRotation + 360 + delta) % 360;
     this.pdfViewer.pagesRotation = this.pageRotation;
-    this.pdfThumbnailViewer.pagesRotation = this.pageRotation;
+    //this.pdfThumbnailViewer.pagesRotation = this.pageRotation;
 
     this.forceRendering();
 
@@ -1549,9 +1549,9 @@ function webViewerPageRendered(e) {
 
   // Use the rendered page to set the corresponding thumbnail image.
   if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
-    var thumbnailView = PDFViewerApplication.pdfThumbnailViewer.
-                        getThumbnail(pageIndex);
-    thumbnailView.setImage(pageView);
+    //var thumbnailView = PDFViewerApplication.pdfThumbnailViewer.
+                        //getThumbnail(pageIndex);
+    //thumbnailView.setImage(pageView);
   }
 
   if (PDFJS.pdfBug && Stats.enabled && pageView.stats) {
@@ -1833,7 +1833,7 @@ function webViewerPageChanging(e) {
   //PDFViewerApplication.secondaryToolbar.setPageNumber(page);
 
   if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
-    PDFViewerApplication.pdfThumbnailViewer.scrollThumbnailIntoView(page);
+    //PDFViewerApplication.pdfThumbnailViewer.scrollThumbnailIntoView(page);
   }
 
   // we need to update stats
