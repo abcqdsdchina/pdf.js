@@ -343,8 +343,8 @@ var PDFViewerApplication = {
         preferences: this.preferences,
       });
 
-      this.pdfDocumentProperties =
-        new PDFDocumentProperties(appConfig.documentProperties);
+      //this.pdfDocumentProperties =
+        //new PDFDocumentProperties(appConfig.documentProperties);
 
       //this.toolbar = new Toolbar(appConfig.toolbar, container, eventBus);
 
@@ -485,9 +485,9 @@ var PDFViewerApplication = {
         onOpenWithTransport(url, length, transport) {
           PDFViewerApplication.open(url, { range: transport, });
 
-          if (length) {
-            PDFViewerApplication.pdfDocumentProperties.setFileSize(length);
-          }
+          //if (length) {
+            //PDFViewerApplication.pdfDocumentProperties.setFileSize(length);
+          //}
         },
         onOpenWithData(data) {
           PDFViewerApplication.open(data);
@@ -561,7 +561,7 @@ var PDFViewerApplication = {
       //this.pdfThumbnailViewer.setDocument(null);
       this.pdfViewer.setDocument(null);
       this.pdfLinkService.setDocument(null, null);
-      this.pdfDocumentProperties.setDocument(null, null);
+      //this.pdfDocumentProperties.setDocument(null, null);
     }
     this.store = null;
     this.isInitialViewSet = false;
@@ -629,9 +629,9 @@ var PDFViewerApplication = {
       if (args.scale) {
         scale = args.scale;
       }
-      if (args.length) {
-        this.pdfDocumentProperties.setFileSize(args.length);
-      }
+      //if (args.length) {
+        //this.pdfDocumentProperties.setFileSize(args.length);
+      //}
     }
 
     this.downloadComplete = false;
@@ -862,7 +862,7 @@ var PDFViewerApplication = {
       baseDocumentUrl = location.href.split('#')[0];
     }
     this.pdfLinkService.setDocument(pdfDocument, baseDocumentUrl);
-    this.pdfDocumentProperties.setDocument(pdfDocument, this.url);
+    //this.pdfDocumentProperties.setDocument(pdfDocument, this.url);
 
     let pdfViewer = this.pdfViewer;
     pdfViewer.currentScale = scale;
@@ -1797,7 +1797,7 @@ function webViewerRotateCcw() {
   PDFViewerApplication.rotatePages(-90);
 }
 function webViewerDocumentProperties() {
-  PDFViewerApplication.pdfDocumentProperties.open();
+  //PDFViewerApplication.pdfDocumentProperties.open();
 }
 
 function webViewerFind(e) {
