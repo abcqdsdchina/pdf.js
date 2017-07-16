@@ -335,7 +335,7 @@ var PDFViewerApplication = {
       //findBarConfig.eventBus = eventBus;
       //this.findBar = new PDFFindBar(findBarConfig);
 
-      this.overlayManager = OverlayManager;
+      //this.overlayManager = OverlayManager;
 
       this.handTool = new HandTool({
         container,
@@ -1902,7 +1902,7 @@ function webViewerClick(evt) {
   //if (!PDFViewerApplication.secondaryToolbar.isOpen) {
     //return;
   //}
-  var appConfig = PDFViewerApplication.appConfig;
+  //var appConfig = PDFViewerApplication.appConfig;
   //if (PDFViewerApplication.pdfViewer.containsElement(evt.target) //||
       //(appConfig.toolbar.container.contains(evt.target) &&
        //evt.target !== appConfig.secondaryToolbar.toggleButton)) {
@@ -1911,9 +1911,9 @@ function webViewerClick(evt) {
 }
 
 function webViewerKeyDown(evt) {
-  if (OverlayManager.active) {
-    return;
-  }
+  //if (OverlayManager.active) {
+    //return;
+  //}
 
   var handled = false, ensureViewerFocused = false;
   var cmd = (evt.ctrlKey ? 1 : 0) |
