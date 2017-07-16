@@ -56,7 +56,7 @@ if (typeof PDFJSDev !== 'undefined' && PDFJSDev.test('CHROME || GENERIC')) {
 
 function getViewerConfiguration() {
   return {
-    appContainer: document.body,
+    appContainer: document.getElementById('pdfContainer'),
     mainContainer: document.getElementById('viewerContainer'),
     viewerContainer: document.getElementById('viewer'),
     eventBus: null, // using global event bus with DOM events

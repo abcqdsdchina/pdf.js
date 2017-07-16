@@ -307,33 +307,33 @@ var PDFViewerApplication = {
       });
       pdfLinkService.setHistory(this.pdfHistory);
 
-      this.findController = new PDFFindController({
-        pdfViewer: this.pdfViewer,
-      });
-      this.findController.onUpdateResultsCount = (matchCount) => {
-        if (this.supportsIntegratedFind) {
-          return;
-        }
-        this.findBar.updateResultsCount(matchCount);
-      };
-      this.findController.onUpdateState = (state, previous, matchCount) => {
-        if (this.supportsIntegratedFind) {
-          this.externalServices.updateFindControlState({
-            result: state,
-            findPrevious: previous,
-          });
-        } else {
-          this.findBar.updateUIState(state, previous, matchCount);
-        }
-      };
+      //this.findController = new PDFFindController({
+        //pdfViewer: this.pdfViewer,
+      //});
+      //this.findController.onUpdateResultsCount = (matchCount) => {
+        //if (this.supportsIntegratedFind) {
+          //return;
+        //}
+        //this.findBar.updateResultsCount(matchCount);
+      //};
+      //this.findController.onUpdateState = (state, previous, matchCount) => {
+        //if (this.supportsIntegratedFind) {
+          //this.externalServices.updateFindControlState({
+            //result: state,
+            //findPrevious: previous,
+          //});
+        //} else {
+          //this.findBar.updateUIState(state, previous, matchCount);
+        //}
+      //};
 
-      this.pdfViewer.setFindController(this.findController);
+      //this.pdfViewer.setFindController(this.findController);
 
       // FIXME better PDFFindBar constructor parameters
-      let findBarConfig = Object.create(appConfig.findBar);
-      findBarConfig.findController = this.findController;
-      findBarConfig.eventBus = eventBus;
-      this.findBar = new PDFFindBar(findBarConfig);
+      //let findBarConfig = Object.create(appConfig.findBar);
+      //findBarConfig.findController = this.findController;
+      //findBarConfig.eventBus = eventBus;
+      //this.findBar = new PDFFindBar(findBarConfig);
 
       this.overlayManager = OverlayManager;
 
@@ -570,8 +570,8 @@ var PDFViewerApplication = {
     this.pdfOutlineViewer.reset();
     this.pdfAttachmentViewer.reset();
 
-    this.findController.reset();
-    this.findBar.reset();
+    //this.findController.reset();
+    //this.findBar.reset();
     this.toolbar.reset();
     this.secondaryToolbar.reset();
 
@@ -1801,23 +1801,23 @@ function webViewerDocumentProperties() {
 }
 
 function webViewerFind(e) {
-  PDFViewerApplication.findController.executeCommand('find' + e.type, {
-    query: e.query,
-    phraseSearch: e.phraseSearch,
-    caseSensitive: e.caseSensitive,
-    highlightAll: e.highlightAll,
-    findPrevious: e.findPrevious
-  });
+  //PDFViewerApplication.findController.executeCommand('find' + e.type, {
+    //query: e.query,
+    //phraseSearch: e.phraseSearch,
+    //caseSensitive: e.caseSensitive,
+    //highlightAll: e.highlightAll,
+    //findPrevious: e.findPrevious
+  //});
 }
 
 function webViewerFindFromUrlHash(e) {
-  PDFViewerApplication.findController.executeCommand('find', {
-    query: e.query,
-    phraseSearch: e.phraseSearch,
-    caseSensitive: false,
-    highlightAll: true,
-    findPrevious: false
-  });
+  //PDFViewerApplication.findController.executeCommand('find', {
+    //query: e.query,
+    //phraseSearch: e.phraseSearch,
+    //caseSensitive: false,
+    //highlightAll: true,
+    //findPrevious: false
+  //});
 }
 
 function webViewerScaleChanging(e) {
@@ -1937,16 +1937,16 @@ function webViewerKeyDown(evt) {
         break;
       case 71: // g
         if (!PDFViewerApplication.supportsIntegratedFind) {
-          var findState = PDFViewerApplication.findController.state;
-          if (findState) {
-            PDFViewerApplication.findController.executeCommand('findagain', {
-              query: findState.query,
-              phraseSearch: findState.phraseSearch,
-              caseSensitive: findState.caseSensitive,
-              highlightAll: findState.highlightAll,
-              findPrevious: cmd === 5 || cmd === 12
-            });
-          }
+          //var findState = PDFViewerApplication.findController.state;
+          //if (findState) {
+            //PDFViewerApplication.findController.executeCommand('findagain', {
+              //query: findState.query,
+              //phraseSearch: findState.phraseSearch,
+              //caseSensitive: findState.caseSensitive,
+              //highlightAll: findState.highlightAll,
+              //findPrevious: cmd === 5 || cmd === 12
+           // });
+          //}
           handled = true;
         }
         break;
