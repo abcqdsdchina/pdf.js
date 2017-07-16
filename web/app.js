@@ -346,10 +346,10 @@ var PDFViewerApplication = {
       this.pdfDocumentProperties =
         new PDFDocumentProperties(appConfig.documentProperties);
 
-      this.toolbar = new Toolbar(appConfig.toolbar, container, eventBus);
+      //this.toolbar = new Toolbar(appConfig.toolbar, container, eventBus);
 
-      this.secondaryToolbar =
-        new SecondaryToolbar(appConfig.secondaryToolbar, container, eventBus);
+      //this.secondaryToolbar =
+        //new SecondaryToolbar(appConfig.secondaryToolbar, container, eventBus);
 
       if (this.supportsFullscreen) {
         this.pdfPresentationMode = new PDFPresentationMode({
@@ -572,8 +572,8 @@ var PDFViewerApplication = {
 
     //this.findController.reset();
     //this.findBar.reset();
-    this.toolbar.reset();
-    this.secondaryToolbar.reset();
+    //this.toolbar.reset();
+    //this.secondaryToolbar.reset();
 
     if (typeof PDFBug !== 'undefined') {
       PDFBug.cleanup();
@@ -847,8 +847,8 @@ var PDFViewerApplication = {
       });
     });
 
-    this.toolbar.setPagesCount(pdfDocument.numPages, false);
-    this.secondaryToolbar.setPagesCount(pdfDocument.numPages);
+    //this.toolbar.setPagesCount(pdfDocument.numPages, false);
+    //this.secondaryToolbar.setPagesCount(pdfDocument.numPages);
 
     let id = this.documentFingerprint = pdfDocument.fingerprint;
     let store = this.store = new ViewHistory(id);
@@ -980,9 +980,9 @@ var PDFViewerApplication = {
 
       // Changing toolbar page display to use labels and we need to set
       // the label of the current page.
-      this.toolbar.setPagesCount(pdfDocument.numPages, true);
-      this.toolbar.setPageNumber(pdfViewer.currentPageNumber,
-                                 pdfViewer.currentPageLabel);
+      //this.toolbar.setPagesCount(pdfDocument.numPages, true);
+      //this.toolbar.setPageNumber(pdfViewer.currentPageNumber,
+                                 //pdfViewer.currentPageLabel);
     });
 
     pagesPromise.then(() => {
@@ -1104,9 +1104,9 @@ var PDFViewerApplication = {
 
     // Ensure that the correct page number is displayed in the UI,
     // even if the active page didn't change during document load.
-    this.toolbar.setPageNumber(this.pdfViewer.currentPageNumber,
-                               this.pdfViewer.currentPageLabel);
-    this.secondaryToolbar.setPageNumber(this.pdfViewer.currentPageNumber);
+    //this.toolbar.setPageNumber(this.pdfViewer.currentPageNumber,
+                               //this.pdfViewer.currentPageLabel);
+    //this.secondaryToolbar.setPageNumber(this.pdfViewer.currentPageNumber);
 
     if (!this.pdfViewer.currentScaleValue) {
       // Scale was not initialized: invalid bookmark or scale was not specified.
@@ -1366,14 +1366,14 @@ function webViewerInitialized() {
 
     if (!window.File || !window.FileReader ||
         !window.FileList || !window.Blob) {
-      appConfig.toolbar.openFile.setAttribute('hidden', 'true');
-      appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
+      //appConfig.toolbar.openFile.setAttribute('hidden', 'true');
+      //appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
     } else {
       fileInput.value = null;
     }
   } else {
-    appConfig.toolbar.openFile.setAttribute('hidden', 'true');
-    appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
+    //appConfig.toolbar.openFile.setAttribute('hidden', 'true');
+    //appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
   }
 
   if ((typeof PDFJSDev === 'undefined' || !PDFJSDev.test('PRODUCTION')) ||
@@ -1458,17 +1458,17 @@ function webViewerInitialized() {
   }
 
   if (!PDFViewerApplication.supportsPrinting) {
-    appConfig.toolbar.print.classList.add('hidden');
-    appConfig.secondaryToolbar.printButton.classList.add('hidden');
+    //appConfig.toolbar.print.classList.add('hidden');
+    //appConfig.secondaryToolbar.printButton.classList.add('hidden');
   }
 
   if (!PDFViewerApplication.supportsFullscreen) {
-    appConfig.toolbar.presentationModeButton.classList.add('hidden');
-    appConfig.secondaryToolbar.presentationModeButton.classList.add('hidden');
+    //appConfig.toolbar.presentationModeButton.classList.add('hidden');
+    //appConfig.secondaryToolbar.presentationModeButton.classList.add('hidden');
   }
 
   if (PDFViewerApplication.supportsIntegratedFind) {
-    appConfig.toolbar.viewFind.classList.add('hidden');
+    //appConfig.toolbar.viewFind.classList.add('hidden');
   }
 
   appConfig.sidebar.mainContainer.addEventListener('transitionend',
@@ -1538,7 +1538,7 @@ function webViewerPageRendered(e) {
   // If the page is still visible when it has finished rendering,
   // ensure that the page number input loading indicator is hidden.
   if (pageNumber === PDFViewerApplication.page) {
-    PDFViewerApplication.toolbar.updateLoadingIndicatorState(false);
+    //PDFViewerApplication.toolbar.updateLoadingIndicatorState(false);
   }
 
   // Prevent errors in the edge-case where the PDF document is removed *before*
@@ -1620,7 +1620,7 @@ function webViewerNamedAction(e) {
   var action = e.action;
   switch (action) {
     case 'GoToPage':
-      PDFViewerApplication.appConfig.toolbar.pageNumber.select();
+      //PDFViewerApplication.appConfig.toolbar.pageNumber.select();
       break;
 
     case 'Find':
@@ -1664,9 +1664,9 @@ function webViewerUpdateViewarea(evt) {
   }
   var href =
     PDFViewerApplication.pdfLinkService.getAnchorUrl(location.pdfOpenParams);
-  PDFViewerApplication.appConfig.toolbar.viewBookmark.href = href;
-  PDFViewerApplication.appConfig.secondaryToolbar.viewBookmarkButton.href =
-    href;
+  //PDFViewerApplication.appConfig.toolbar.viewBookmark.href = href;
+  //PDFViewerApplication.appConfig.secondaryToolbar.viewBookmarkButton.href =
+    //href;
 
   // Update the current bookmark in the browsing history.
   PDFViewerApplication.pdfHistory.updateCurrentBookmark(location.pdfOpenParams,
@@ -1676,7 +1676,7 @@ function webViewerUpdateViewarea(evt) {
   var currentPage =
     PDFViewerApplication.pdfViewer.getPageView(PDFViewerApplication.page - 1);
   var loading = currentPage.renderingState !== RenderingStates.FINISHED;
-  PDFViewerApplication.toolbar.updateLoadingIndicatorState(loading);
+  //PDFViewerApplication.toolbar.updateLoadingIndicatorState(loading);
 }
 
 function webViewerResize() {
@@ -1732,11 +1732,11 @@ if (typeof PDFJSDev === 'undefined' || PDFJSDev.test('GENERIC')) {
 
     // URL does not reflect proper document location - hiding some icons.
     var appConfig = PDFViewerApplication.appConfig;
-    appConfig.toolbar.viewBookmark.setAttribute('hidden', 'true');
-    appConfig.secondaryToolbar.viewBookmarkButton.setAttribute('hidden',
-                                                               'true');
-    appConfig.toolbar.download.setAttribute('hidden', 'true');
-    appConfig.secondaryToolbar.downloadButton.setAttribute('hidden', 'true');
+    //appConfig.toolbar.viewBookmark.setAttribute('hidden', 'true');
+    //appConfig.secondaryToolbar.viewBookmarkButton.setAttribute('hidden',
+                                                               //'true');
+    //appConfig.toolbar.download.setAttribute('hidden', 'true');
+    //appConfig.secondaryToolbar.downloadButton.setAttribute('hidden', 'true');
   };
 }
 
@@ -1783,8 +1783,8 @@ function webViewerPageNumberChanged(e) {
   // value entered by the user was invalid (e.g. a floating point number).
   if (e.value !== pdfViewer.currentPageNumber.toString() &&
       e.value !== pdfViewer.currentPageLabel) {
-    PDFViewerApplication.toolbar.setPageNumber(
-      pdfViewer.currentPageNumber, pdfViewer.currentPageLabel);
+    //PDFViewerApplication.toolbar.setPageNumber(
+      //pdfViewer.currentPageNumber, pdfViewer.currentPageLabel);
   }
 }
 function webViewerScaleChanged(e) {
@@ -1821,7 +1821,7 @@ function webViewerFindFromUrlHash(e) {
 }
 
 function webViewerScaleChanging(e) {
-  PDFViewerApplication.toolbar.setPageScale(e.presetValue, e.scale);
+  //PDFViewerApplication.toolbar.setPageScale(e.presetValue, e.scale);
 
   PDFViewerApplication.pdfViewer.update();
 }
@@ -1829,8 +1829,8 @@ function webViewerScaleChanging(e) {
 function webViewerPageChanging(e) {
   var page = e.pageNumber;
 
-  PDFViewerApplication.toolbar.setPageNumber(page, e.pageLabel || null);
-  PDFViewerApplication.secondaryToolbar.setPageNumber(page);
+  //PDFViewerApplication.toolbar.setPageNumber(page, e.pageLabel || null);
+  //PDFViewerApplication.secondaryToolbar.setPageNumber(page);
 
   if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
     PDFViewerApplication.pdfThumbnailViewer.scrollThumbnailIntoView(page);
@@ -1899,15 +1899,15 @@ function webViewerWheel(evt) {
 }
 
 function webViewerClick(evt) {
-  if (!PDFViewerApplication.secondaryToolbar.isOpen) {
-    return;
-  }
+  //if (!PDFViewerApplication.secondaryToolbar.isOpen) {
+    //return;
+  //}
   var appConfig = PDFViewerApplication.appConfig;
-  if (PDFViewerApplication.pdfViewer.containsElement(evt.target) ||
-      (appConfig.toolbar.container.contains(evt.target) &&
-       evt.target !== appConfig.secondaryToolbar.toggleButton)) {
-    PDFViewerApplication.secondaryToolbar.close();
-  }
+  //if (PDFViewerApplication.pdfViewer.containsElement(evt.target) //||
+      //(appConfig.toolbar.container.contains(evt.target) &&
+       //evt.target !== appConfig.secondaryToolbar.toggleButton)) {
+    //PDFViewerApplication.secondaryToolbar.close();
+  //}
 }
 
 function webViewerKeyDown(evt) {
@@ -2019,7 +2019,7 @@ function webViewerKeyDown(evt) {
         break;
       case 71: // g
         // focuses input#pageNumber field
-        PDFViewerApplication.appConfig.toolbar.pageNumber.select();
+        //PDFViewerApplication.appConfig.toolbar.pageNumber.select();
         handled = true;
         break;
     }
@@ -2071,15 +2071,15 @@ function webViewerKeyDown(evt) {
         handled = true;
         break;
       case 27: // esc key
-        if (PDFViewerApplication.secondaryToolbar.isOpen) {
-          PDFViewerApplication.secondaryToolbar.close();
-          handled = true;
-        }
-        if (!PDFViewerApplication.supportsIntegratedFind &&
-            PDFViewerApplication.findBar.opened) {
-          PDFViewerApplication.findBar.close();
-          handled = true;
-        }
+        //if (PDFViewerApplication.secondaryToolbar.isOpen) {
+          //PDFViewerApplication.secondaryToolbar.close();
+          //handled = true;
+        //}
+        //if (!PDFViewerApplication.supportsIntegratedFind &&
+            //PDFViewerApplication.findBar.opened) {
+         // PDFViewerApplication.findBar.close();
+          //handled = true;
+        //}
         break;
       case 40: // down arrow
       case 34: // pg down
