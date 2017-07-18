@@ -273,9 +273,6 @@ var PDFViewerApplication = {
       });
       this.pdfLinkService = pdfLinkService;
 
-      //let downloadManager = this.externalServices.createDownloadManager();
-      //this.downloadManager = downloadManager;
-
       let container = appConfig.mainContainer;
       let viewer = appConfig.viewerContainer;
       this.pdfViewer = new PDFViewer({
