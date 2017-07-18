@@ -293,14 +293,6 @@ var PDFViewerApplication = {
       pdfRenderingQueue.setViewer(this.pdfViewer);
       pdfLinkService.setViewer(this.pdfViewer);
 
-      //let thumbnailContainer = appConfig.sidebar.thumbnailView;
-      //this.pdfThumbnailViewer = new PDFThumbnailViewer({
-        //container: thumbnailContainer,
-        //renderingQueue: pdfRenderingQueue,
-        //linkService: pdfLinkService,
-      //});
-      //pdfRenderingQueue.setThumbnailViewer(this.pdfThumbnailViewer);
-
       this.pdfHistory = new PDFHistory({
         linkService: pdfLinkService,
         eventBus,
