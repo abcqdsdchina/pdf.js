@@ -969,13 +969,7 @@ var PDFViewerApplication = {
     }
 
     var pagesOverview = this.pdfViewer.getPagesOverview();
-    var printContainer = this.appConfig.printContainer;
-    var printService = PDFPrintServiceFactory.instance.createPrintService(
-      this.pdfDocument, pagesOverview, printContainer);
-    this.printService = printService;
     this.forceRendering();
-
-    printService.layout();
 
     if (typeof PDFJSDev !== 'undefined' &&
         PDFJSDev.test('FIREFOX || MOZCENTRAL')) {
