@@ -71,71 +71,71 @@ See https://github.com/adobe-type-tools/cmap-resources
 
   <body>
     <div tabindex="1" class="loadingInProgress" id="pdfContainer" style="width:300px;height:300px;">
-    <div id="outerContainer">
+      <div id="outerContainer">
 
-      <div id="mainContainer">
-        <div id="viewerContainer" tabindex="0">
-          <div id="viewer" class="pdfViewer"></div>
-        </div>
+        <div id="mainContainer">
+          <div id="viewerContainer" tabindex="0">
+            <div id="viewer" class="pdfViewer"></div>
+          </div>
 
-        <div id="errorWrapper" hidden='true'>
-          <div id="errorMessageLeft">
-            <span id="errorMessage"></span>
-            <button id="errorShowMore" data-l10n-id="error_more_info">
-              More Information
-            </button>
-            <button id="errorShowLess" data-l10n-id="error_less_info" hidden='true'>
-              Less Information
-            </button>
+          <div id="errorWrapper" hidden='true'>
+            <div id="errorMessageLeft">
+              <span id="errorMessage"></span>
+              <button id="errorShowMore" data-l10n-id="error_more_info">
+                More Information
+              </button>
+              <button id="errorShowLess" data-l10n-id="error_less_info" hidden='true'>
+                Less Information
+              </button>
+            </div>
+            <div id="errorMessageRight">
+              <button id="errorClose" data-l10n-id="error_close">
+                Close
+              </button>
+            </div>
+            <div class="clearBoth"></div>
+            <textarea id="errorMoreInfo" hidden='true' readonly="readonly"></textarea>
           </div>
-          <div id="errorMessageRight">
-            <button id="errorClose" data-l10n-id="error_close">
-              Close
-            </button>
-          </div>
-          <div class="clearBoth"></div>
-          <textarea id="errorMoreInfo" hidden='true' readonly="readonly"></textarea>
-        </div>
-      </div> <!-- mainContainer -->
+        </div> <!-- mainContainer -->
 
-      <div id="overlayContainer" class="hidden">
-        <div id="passwordOverlay" class="container hidden">
-          <div class="dialog">
-            <div class="row">
-              <p id="passwordText" data-l10n-id="password_label">Enter the password to open this PDF file:</p>
-            </div>
-            <div class="row">
-              <input type="password" id="password" class="toolbarField">
-            </div>
-            <div class="buttonRow">
-              <button id="passwordCancel" class="overlayButton"><span data-l10n-id="password_cancel">Cancel</span></button>
-              <button id="passwordSubmit" class="overlayButton"><span data-l10n-id="password_ok">OK</span></button>
-            </div>
-          </div>
-        </div>
-<!--#if !(FIREFOX || MOZCENTRAL)-->
-        <div id="printServiceOverlay" class="container hidden">
-          <div class="dialog">
-            <div class="row">
-              <span data-l10n-id="print_progress_message">Preparing document for printing…</span>
-            </div>
-            <div class="row">
-              <progress value="0" max="100"></progress>
-              <span data-l10n-id="print_progress_percent" data-l10n-args='{ "progress": 0 }' class="relative-progress">0%</span>
-            </div>
-            <div class="buttonRow">
-              <button id="printCancel" class="overlayButton"><span data-l10n-id="print_progress_close">Cancel</span></button>
+        <div id="overlayContainer" class="hidden">
+          <div id="passwordOverlay" class="container hidden">
+            <div class="dialog">
+              <div class="row">
+                <p id="passwordText" data-l10n-id="password_label">Enter the password to open this PDF file:</p>
+              </div>
+              <div class="row">
+                <input type="password" id="password" class="toolbarField">
+              </div>
+              <div class="buttonRow">
+                <button id="passwordCancel" class="overlayButton"><span data-l10n-id="password_cancel">Cancel</span></button>
+                <button id="passwordSubmit" class="overlayButton"><span data-l10n-id="password_ok">OK</span></button>
+              </div>
             </div>
           </div>
-        </div>
-<!--#endif-->
-<!--#if CHROME-->
-<!--#include viewer-snippet-chrome-overlays.html-->
-<!--#endif-->
-      </div>  <!-- overlayContainer -->
+  <!--#if !(FIREFOX || MOZCENTRAL)-->
+          <div id="printServiceOverlay" class="container hidden">
+            <div class="dialog">
+              <div class="row">
+                <span data-l10n-id="print_progress_message">Preparing document for printing…</span>
+              </div>
+              <div class="row">
+                <progress value="0" max="100"></progress>
+                <span data-l10n-id="print_progress_percent" data-l10n-args='{ "progress": 0 }' class="relative-progress">0%</span>
+              </div>
+              <div class="buttonRow">
+                <button id="printCancel" class="overlayButton"><span data-l10n-id="print_progress_close">Cancel</span></button>
+              </div>
+            </div>
+          </div>
+  <!--#endif-->
+  <!--#if CHROME-->
+  <!--#include viewer-snippet-chrome-overlays.html-->
+  <!--#endif-->
+        </div>  <!-- overlayContainer -->
 
-    </div> <!-- outerContainer -->
-    <div id="printContainer"></div>
+      </div> <!-- outerContainer -->
+      <div id="printContainer"></div>
     </div>
   </body>
 </html>
