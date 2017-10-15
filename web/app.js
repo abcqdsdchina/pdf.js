@@ -32,7 +32,6 @@ import { PDFViewer, PresentationModeState } from './pdf_viewer';
 import { getGlobalEventBus } from './dom_events';
 import { HandTool } from './hand_tool';
 import { OverlayManager } from './overlay_manager';
-import { PasswordPrompt } from './password_prompt';
 import { PDFAttachmentViewer } from './pdf_attachment_viewer';
 import { PDFDocumentProperties } from './pdf_document_properties';
 import { PDFFindBar } from './pdf_find_bar';
@@ -312,8 +311,6 @@ var PDFViewerApplication = {
         });
       }
 
-      this.passwordPrompt = new PasswordPrompt(appConfig.passwordOverlay);
-
       resolve(undefined);
     });
   },
@@ -547,11 +544,6 @@ var PDFViewerApplication = {
 
     let loadingTask = getDocument(parameters);
     this.pdfLoadingTask = loadingTask;
-
-    loadingTask.onPassword = (updateCallback, reason) => {
-      this.passwordPrompt.setUpdateCallback(updateCallback, reason);
-      this.passwordPrompt.open();
-    };
 
     loadingTask.onProgress = ({ loaded, total, }) => {
       this.progress(loaded / total);
