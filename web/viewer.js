@@ -24,14 +24,6 @@ function getViewerConfiguration() {
     mainContainer: document.getElementById('viewerContainer'),
     viewerContainer: document.getElementById('viewer'),
     eventBus: null, // using global event bus with DOM events
-    passwordOverlay: {
-      overlayName: 'passwordOverlay',
-      container: document.getElementById('passwordOverlay'),
-      label: document.getElementById('passwordText'),
-      input: document.getElementById('password'),
-      submitButton: document.getElementById('passwordSubmit'),
-      cancelButton: document.getElementById('passwordCancel')
-    },
     errorWrapper: {
       container: document.getElementById('errorWrapper'),
       errorMessage: document.getElementById('errorMessage'),
