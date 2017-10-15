@@ -24,14 +24,6 @@ function getViewerConfiguration() {
     mainContainer: document.getElementById('viewerContainer'),
     viewerContainer: document.getElementById('viewer'),
     eventBus: null, // using global event bus with DOM events
-    errorWrapper: {
-      container: document.getElementById('errorWrapper'),
-      errorMessage: document.getElementById('errorMessage'),
-      closeButton: document.getElementById('errorClose'),
-      errorMoreInfo: document.getElementById('errorMoreInfo'),
-      moreInfoButton: document.getElementById('errorShowMore'),
-      lessInfoButton: document.getElementById('errorShowLess'),
-    },
     printContainer: document.getElementById('printContainer'),
     openFileInputName: 'fileInput',
     debuggerScriptPath: './debugger.js',
