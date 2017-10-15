@@ -465,8 +465,6 @@ var PDFViewerApplication = {
    *                      destruction is completed.
    */
   close: function pdfViewClose() {
-    var errorWrapper = this.appConfig.errorWrapper.container;
-    errorWrapper.setAttribute('hidden', 'true');
 
     if (!this.pdfLoadingTask) {
       return Promise.resolve();
@@ -661,38 +659,6 @@ var PDFViewerApplication = {
 
     if (typeof PDFJSDev === 'undefined' ||
         !PDFJSDev.test('FIREFOX || MOZCENTRAL')) {
-      var errorWrapperConfig = this.appConfig.errorWrapper;
-      var errorWrapper = errorWrapperConfig.container;
-      errorWrapper.removeAttribute('hidden');
-
-      var errorMessage = errorWrapperConfig.errorMessage;
-      errorMessage.textContent = message;
-
-      var closeButton = errorWrapperConfig.closeButton;
-      closeButton.onclick = function() {
-        errorWrapper.setAttribute('hidden', 'true');
-      };
-
-      var errorMoreInfo = errorWrapperConfig.errorMoreInfo;
-      var moreInfoButton = errorWrapperConfig.moreInfoButton;
-      var lessInfoButton = errorWrapperConfig.lessInfoButton;
-      moreInfoButton.onclick = function() {
-        errorMoreInfo.removeAttribute('hidden');
-        moreInfoButton.setAttribute('hidden', 'true');
-        lessInfoButton.removeAttribute('hidden');
-        errorMoreInfo.style.height = errorMoreInfo.scrollHeight + 'px';
-      };
-      lessInfoButton.onclick = function() {
-        errorMoreInfo.setAttribute('hidden', 'true');
-        moreInfoButton.removeAttribute('hidden');
-        lessInfoButton.setAttribute('hidden', 'true');
-      };
-      moreInfoButton.oncontextmenu = noContextMenuHandler;
-      lessInfoButton.oncontextmenu = noContextMenuHandler;
-      closeButton.oncontextmenu = noContextMenuHandler;
-      moreInfoButton.removeAttribute('hidden');
-      lessInfoButton.setAttribute('hidden', 'true');
-      errorMoreInfo.value = moreInfoText;
     } else {
       console.error(message + '\n' + moreInfoText);
       this.fallback();
