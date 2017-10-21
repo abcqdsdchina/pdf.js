@@ -31,15 +31,20 @@ function getViewerConfiguration() {
 }
 
 function webViewerLoad() {
-  var config = getViewerConfiguration();
-  Promise.all([
-    SystemJS.import('pdfjs-web/app'),
-    SystemJS.import('pdfjs-web/genericcom'),
-    SystemJS.import('pdfjs-web/pdf_print_service'),
-  ]).then(function (modules) {
-    var app = modules[0];
-    app.PDFViewerApplication.run(config);
-  });
+  let config = getViewerConfiguration();
+  if (typeof PDFJSDev === 'undefined' || !PDFJSDev.test('PRODUCTION')) {
+    Promise.all([
+      SystemJS.import('pdfjs-web/app'),
+      SystemJS.import('pdfjs-web/genericcom'),
+      SystemJS.import('pdfjs-web/pdf_print_service'),
+    ]).then(function([app, ...otherModules]) {
+      window.PDFViewerApplication = app.PDFViewerApplication;
+      app.PDFViewerApplication.run(config);
+    });
+  } else {
+    window.PDFViewerApplication = pdfjsWebApp.PDFViewerApplication;
+    pdfjsWebApp.PDFViewerApplication.run(config);
+  }
 }
 
 if (document.readyState === 'interactive' ||
