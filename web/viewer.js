@@ -16,7 +16,14 @@
 
 'use strict';
 
-var DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf';
+let pdfjsWebApp;
+if (typeof PDFJSDev !== 'undefined' && PDFJSDev.test('PRODUCTION')) {
+  pdfjsWebApp = require('./app.js');
+}
+
+if (typeof PDFJSDev !== 'undefined' && PDFJSDev.test('GENERIC')) {
+  require('./genericcom.js');
+}
 
 function getViewerConfiguration() {
   return {
@@ -26,7 +33,7 @@ function getViewerConfiguration() {
     eventBus: null, // using global event bus with DOM events
     openFileInputName: 'fileInput',
     debuggerScriptPath: './debugger.js',
-    defaultUrl: DEFAULT_URL
+    defaultUrl: document.getElementById('pdfContainer').dataset.pdfUrl
   };
 }
 
